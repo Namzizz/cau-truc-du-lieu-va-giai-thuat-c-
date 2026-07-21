@@ -23,23 +23,25 @@ using namespace std;
 
 //bài toán nhập kí tự (){} có chuẩn hay không
 int main(){
+    bool ok=true;
     string s;cin>>s;
     stack<char>st;
     for(auto x:s){
         if(x=='('){
             st.push(x);
         }
-    }
-    while (!st.empty())
-    {
-        for(auto a:s){
-           if(a==')'){
-             st.pop();
-           }
+        else{
+            if(st.empty()){
+               ok=false;
+               break;
+            }
+            else{
+                st.pop();
+            }
         }
-        
     }
-    if(st.empty()){
+    
+    if(ok&&st.empty()){
         cout<<"Value\n";
     }
     else{
